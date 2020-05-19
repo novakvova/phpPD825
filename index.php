@@ -9,11 +9,41 @@
     <title>Document</title>
 </head>
 <body>
-<?php include_once("navbar.php"); ?>
+<?php
+include_once("navbar.php");
+include("connection_database.php");
+$sql = "SELECT u.id, u.email FROM tbl_users AS u";
+$stmt= $dbh->prepare($sql);
+$stmt->execute();
+
+?>
 
 <div class="container">
     <div class="row">
         <h1>Овочі</h1>
+        <table class="table table-dark">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+            {
+                ?>
+            <tr>
+                <th scope="row">1</th>
+                <td> <?php echo $row['email']; ?> </td>
+            </tr>
+            <?php
+            }
+            ?>
+
+            </tbody>
+        </table>
+
     </div>
 </div>
 

@@ -1,6 +1,7 @@
 <?php
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
+    include("connection_database.php");
     $email = $_POST["email"];
     $password = $_POST['password'];
     $uppercase = preg_match('@[A-Z]@', $password);
@@ -10,9 +11,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         $error="Занадто слабкий пароль";
     }else{
         $error="";
-        $user="lopatkin";
-        $pass="123456";
-        $dbh = new PDO('mysql:host=localhost;dbname=dblopatkin', $user, $pass);
         $sql = "SELECT u.id FROM tbl_users AS u WHERE u.email=? LIMIT 1";
         $stmt= $dbh->prepare($sql);
         $stmt->execute([$email]);
