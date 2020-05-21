@@ -26,6 +26,17 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 //        }
         if($error=="")
         {
+            $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/upload/';
+            $file_name= uniqid('300_').'.jpg';
+            $file_save_path=$uploaddir.$file_name;
+
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $file_save_path)) {
+                echo "Файл корректен и был успешно загружен.\n";
+            } else {
+                echo "Возможная атака с помощью файловой загрузки!\n";
+            }
+
+
             $sql = "INSERT INTO `tbl_users` (`email`, `password`, `image`) VALUES (?, ?, 'nophoto');";
             $stmt= $dbh->prepare($sql);
             $stmt->execute([$email, $password]);
@@ -68,6 +79,10 @@ else{
             <div class="offset-3 col-6 form-group">
                 <label for="password">Пароль</label>
                 <input required type="password" value="<?php echo $password ?>" class="form-control" id="password" name="password">
+            </div>
+
+            <div class="offset-3 col-6 form-group">
+                <input type="file" class="form-control" id="image" name="image">
             </div>
             <div class="offset-3 form-group form-check">
                 <input required type="checkbox" class="form-check-input" id="exampleCheck1">
