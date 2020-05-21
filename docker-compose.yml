@@ -12,7 +12,7 @@ services:
         networks:
             - code-network
     php:
-        image: php:7.2-fpm
+        image: php:fpm
         volumes:
             - ./htdocs:/code
         networks:
