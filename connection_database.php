@@ -1,14 +1,18 @@
 <?php
 $host = 'mysql';
-$db = getenv('MYSQL_DATABASE');
-$user = getenv('MYSQL_USER');
-$pass = getenv('MYSQL_PASSWORD');
+$db = 'dummy';//getenv('MYSQL_DATABASE');
+echo "---------------".$db;
+$user = 'dummy';//getenv('MYSQL_USER');
+$pass = 'dummy';//getenv('MYSQL_PASSWORD');
 try {
     $dbh = new PDO('mysql:host='.$host.';dbname='.$db, $user, $pass);
 } catch (PDOException $e) {
-    echo 'Подключение не удалось: ' . $e->getMessage();
+    echo 'РџРѕРґРєР»СЋС‡РµРЅРёРµ РЅРµ СѓРґР°Р»РѕСЃСЊ: ' . $e->getMessage();
     exit;
 }
+
+
+
 
 
 
