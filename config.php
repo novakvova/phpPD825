@@ -1,5 +1,5 @@
 <?php
-define('DB_NAME','dblopatkin');
-define('DB_USER','lopatkin');
-define('DB_PASSWORD','123456');
-define('DB_HOST','localhost');
+define('DB_NAME','dummy');
+define('DB_USER','dummy');
+define('DB_PASSWORD','dummy');
+define('DB_HOST','mysql');
