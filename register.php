@@ -40,7 +40,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
             $sql = "INSERT INTO `tbl_users` (`email`, `password`, `image`) VALUES (?, ?, 'nophoto');";
             $stmt= $dbh->prepare($sql);
             $stmt->execute([$email, $password]);
-            //echo "<script>console.log('wwdwdw')</script>";
             echo '<script>window.location.href = "index.php";</script>';
             //header("Location: /index.php");
             exit();
