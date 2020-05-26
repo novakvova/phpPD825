@@ -1,7 +1,8 @@
 <?php
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
-    include("connection_database.php");
+    include_once("connection_database.php");
+    include_once("lib/compressor.php");
     $email = $_POST["email"];
     $password = $_POST['password'];
     $uppercase = preg_match('@[A-Z]@', $password);
@@ -30,11 +31,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
             $file_name= uniqid('300_').'.jpg';
             $file_save_path=$uploaddir.$file_name;
 
-            if (move_uploaded_file($_FILES['image']['tmp_name'], $file_save_path)) {
-                echo "Файл корректен и был успешно загружен.\n";
-            } else {
-                echo "Возможная атака с помощью файловой загрузки!\n";
-            }
+            my_image_resize(100, 100, $file_save_path, 'image');
+
+//            if (move_uploaded_file($_FILES['image']['tmp_name'], $file_save_path)) {
+//                echo "Файл корректен и был успешно загружен.\n";
+//            } else {
+//                echo "Возможная атака с помощью файловой загрузки!\n";
+//            }
 
 
             $sql = "INSERT INTO `tbl_users` (`email`, `password`, `image`) VALUES (?, ?, 'nophoto');";
