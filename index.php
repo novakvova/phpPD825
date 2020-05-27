@@ -20,7 +20,7 @@ $stmt->execute();
 
 <div class="container">
     <div class="row">
-        <h1>Веселі користувачі</h1>
+        <h1>Веселі користувачі - огірки</h1>
         <table class="table table-dark">
             <thead>
             <tr>
