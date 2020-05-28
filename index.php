@@ -21,7 +21,7 @@ $stmt->execute();
 <div class="container">
     <div class="row">
         <h1>Веселі користувачі - огірки</h1>
-        <table class="table table-dark">
+        <table class="table table-hover">
             <thead>
             <tr>
                 <th scope="col">#</th>
